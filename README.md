@@ -40,6 +40,22 @@ We provide bellow some of the models trained in a self-supervised manner. More m
   </tbody>
 </table>
 
+Code snippet for loading the weights in a torchvision standard resnet:
+
+```python
+import torch
+from torchvision.models import resnet50
+
+init_weights = torch.load('flr_r50_flickr_face.pth', map_location=torch.device('cpu'))['state_dict']
+converted_weights = {k.replace('module.base_net.', ''):v for k, v in init_weights.items()}
+
+model = resnet50(weights=None)
+results = model.load_state_dict(converted_weights, strict=False)
+# Note: the classifier layer is not loaded (fc.weight and fc.bias)
+# similarly,  the projection layers used for pre-training are discarded.
+print(results)
+```
+
 ## Installation
 
 To use the code, clone the repo and install the following packages:
