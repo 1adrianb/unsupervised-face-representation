@@ -32,11 +32,6 @@ We provide bellow some of the models trained in a self-supervised manner. More m
       <td align="center">ResNet 50</td>
       <td align="center"> <a href="https://www.adrianbulat.com/downloads/ECCV2022/pretrained_models/unsupervised/flr_r50_vgg_face_1m.pth">model</a> </td>
     </tr>
-    <tr>
-      <td align="center">FPR-Flickr</td>
-      <td align="center">ResNet 50</td>
-      <td align="center"> <a href="https://www.adrianbulat.com/downloads/ECCV2022/pretrained_models/unsupervised/flr_r50_flickr_face.pth">model</a></td>
-    </tr>
   </tbody>
 </table>
 
@@ -46,7 +41,7 @@ Code snippet for loading the weights in a torchvision standard resnet:
 import torch
 from torchvision.models import resnet50
 
-init_weights = torch.load('flr_r50_flickr_face.pth', map_location=torch.device('cpu'))['state_dict']
+init_weights = torch.load('flr_r50_vgg_face.pth', map_location=torch.device('cpu'))['state_dict']
 converted_weights = {k.replace('module.base_net.', ''):v for k, v in init_weights.items()}
 
 model = resnet50(weights=None)
