@@ -87,9 +87,6 @@ bash scripts/run.sh
 
 Before running the script make sure to set the appropiate paths. The models released in the paper were trained using 64 K40 GPUs.
 
-## Preparing data
-
-For instructions regarding getting the data, see [DATASET.md](slowfast/datasets/DATASET.md)
 
 ## Acknowledgement
 
